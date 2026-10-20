@@ -1,4 +1,4 @@
-package ru.aston.homework3.strategypattern;
+package ru.aston.homework3.strategy;
 
 public class Toyota extends Car {
     public Toyota() {
