@@ -1,7 +1,9 @@
 package ru.aston.homework3.decorator;
 
-public class CoffeeDecorator implements Coffee {
-    protected Coffee decoratedCoffee;
+import java.math.BigDecimal;
+
+public abstract class CoffeeDecorator implements Coffee {
+    private final Coffee decoratedCoffee;
 
     public CoffeeDecorator(Coffee coffee) {
         this.decoratedCoffee = coffee;
@@ -13,7 +15,7 @@ public class CoffeeDecorator implements Coffee {
     }
 
     @Override
-    public double getCost() {
+    public BigDecimal getCost() {
         return decoratedCoffee.getCost();
     }
 }

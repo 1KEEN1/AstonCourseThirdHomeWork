@@ -14,12 +14,4 @@ public abstract class Car {
     public void setFillStrategy(FillStrategy fillStrategy) {
         this.fillStrategy = fillStrategy;
     }
-
-    public void gas() {
-        System.out.println("Car is moving.");
-    }
-
-    public void brake() {
-        System.out.println("Car is braking.");
-    }
 }

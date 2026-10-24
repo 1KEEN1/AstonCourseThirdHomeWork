@@ -6,7 +6,7 @@ public class SMSMessageSender extends MessageSender {
     }
 
     @Override
-    public void write(String message) {
+    protected void write(String message) {
         System.out.println("SMS message sender: " + message);
     }
 }

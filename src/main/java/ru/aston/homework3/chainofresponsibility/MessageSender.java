@@ -8,19 +8,20 @@ public abstract class MessageSender {
         this.priorityLevel = priorityLevel;
     }
 
-    public void setNextMessageSender(MessageSender nextMessageSender) {
+    public MessageSender setNextMessageSender(MessageSender nextMessageSender) {
         this.nextMessageSender = nextMessageSender;
+        return this;
     }
 
-    public void messageSenderManager(String message, PriorityLevel level) {
+    public void sendMassage(String message, PriorityLevel level) {
         if (level.getWeight() >= priorityLevel.getWeight()) {
             write(message);
             return;
         }
         if (nextMessageSender != null) {
-            nextMessageSender.messageSenderManager(message, level);
+            nextMessageSender.sendMassage(message, level);
         }
     }
 
-    public abstract void write(String message);
+    protected abstract void write(String message);
 }

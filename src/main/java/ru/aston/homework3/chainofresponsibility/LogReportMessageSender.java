@@ -6,7 +6,7 @@ public class LogReportMessageSender extends MessageSender {
     }
 
     @Override
-    public void write(String message) {
+    protected void write(String message) {
         System.out.println("Log report message sender: " + message);
     }
 }

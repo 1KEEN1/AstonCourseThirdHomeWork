@@ -1,15 +1,15 @@
 package ru.aston.homework3.proxy;
 
 public class RealImage implements Image {
-    private String fileName;
+    private final String fileName;
 
     public RealImage(String fileName) {
         this.fileName = fileName;
         loadFromDisk();
     }
 
-    public void loadFromDisk() {
-        System.out.println("Loading Image from disk..." + fileName);
+    private void loadFromDisk() {
+        System.out.println("Loading Image from disk... " + fileName);
     }
 
     @Override

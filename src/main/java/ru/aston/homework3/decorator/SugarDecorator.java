@@ -1,6 +1,10 @@
 package ru.aston.homework3.decorator;
 
+import java.math.BigDecimal;
+
 public class SugarDecorator extends CoffeeDecorator {
+    public static final BigDecimal SUGAR_COST = new BigDecimal("0.15");
+
     public SugarDecorator(Coffee coffee) {
         super(coffee);
     }
@@ -11,7 +15,7 @@ public class SugarDecorator extends CoffeeDecorator {
     }
 
     @Override
-    public double getCost() {
-        return super.getCost() + 0.15;
+    public BigDecimal getCost() {
+        return super.getCost().add(SUGAR_COST);
     }
 }

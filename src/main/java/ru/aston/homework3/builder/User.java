@@ -1,14 +1,18 @@
 package ru.aston.homework3.builder;
 
 public class User {
-    private final String firstName; // Required
-    private final String secondName; // Required
-    private final int age; // Optional
+    private final String firstName;
+    private final String lastName;
+    private final int age;
 
     private User(UserBuilder userBuilder) {
         this.firstName = userBuilder.firstName;
-        this.secondName = userBuilder.secondName;
+        this.lastName = userBuilder.lastName;
         this.age = userBuilder.age;
+    }
+
+    public static UserBuilder builder() {
+        return new UserBuilder();
     }
 
     public String getFirstName() {
@@ -16,7 +20,7 @@ public class User {
     }
 
     public String getSecondName() {
-        return secondName;
+        return lastName;
     }
 
     public int getAge() {
@@ -27,19 +31,27 @@ public class User {
     public String toString() {
         return "User{" +
                 "firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
+                ", secondName='" + lastName + '\'' +
                 ", age=" + age +
                 '}';
     }
 
     public static class UserBuilder {
-        private final String firstName; // Required
-        private final String secondName; // Required
-        private int age = 0; // Optional
+        private String firstName;
+        private String lastName;
+        private int age;
 
-        public UserBuilder(String firstName, String secondName) {
+        public UserBuilder() {
+        }
+
+        public UserBuilder firstName(String firstName) {
             this.firstName = firstName;
-            this.secondName = secondName;
+            return this;
+        }
+
+        public UserBuilder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
         }
 
         public UserBuilder age(int age) {
@@ -48,6 +60,12 @@ public class User {
         }
 
         public User build() {
+            if (firstName == null || firstName.isBlank()) {
+                throw new IllegalStateException("firstName is required");
+            }
+            if (lastName == null || lastName.isBlank()) {
+                throw new IllegalStateException("lastName is required");
+            }
             return new User(this);
         }
     }
